@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let humanScore = 0, compScore = 0
+        function getComputerChoice(num) {
+            let x = Math.floor(Math.random() * num);
+            if (x == 0)
+                return "Rock"
+            else if (x == 1)
+                return "Paper"
+            else
+                return "Scissors"
+            // return x;
+        }
+
+        function getHumanChoice() {
+            return prompt("Rock / Paper / Scissors ?");
+        }
+
+        function playRound(humanChoice, computerChoice) {
+            const hc = humanChoice.toLowerCase()
+            const cc = computerChoice.toLowerCase()
+            if (hc == 'rock' && cc == 'paper') {
+                compScore += 1;
+                console.log("You lose! Paper beats Rock")
+                console.log("current SCORES : ")
+                console.log("Computer Score : " + compScore);
+                console.log("Your Score : " + humanScore);
+            }
+            if (hc == 'paper' && cc == 'scissor') {
+                compScore += 1;
+                console.log("You lose! scissor beats paper")
+                console.log("current SCORES : ")
+                console.log("Computer Score : " + compScore);
+                console.log("Your Score : " + humanScore);
+            }
+            if (hc == 'scissor' && cc == 'rock') {
+                compScore += 1;
+                console.log("You lose! rock beats scissor")
+                console.log("current SCORES : ")
+                console.log("Computer Score : " + compScore);
+                console.log("Your Score : " + humanScore);
+            }
+            if (hc == 'scissor' && cc == 'paper') {
+                humanScore += 1;
+                console.log("You Win! scissor beats paper")
+                console.log("current SCORES : ")
+                console.log("Computer Score : " + compScore);
+                console.log("Your Score : " + humanScore);
+            }
+            if (hc == 'rock' && cc == 'scissor') {
+                humanScore += 1;
+                console.log("You Win! Rock beats Scissor")
+                console.log("current SCORES : ")
+                console.log("Computer Score : " + compScore);
+                console.log("Your Score : " + humanScore);
+            }
+            if (hc == 'paper' && cc == 'rock') {
+                humanScore += 1;
+                console.log("You Win! Paper beats Rock")
+                console.log("current SCORES : ")
+                console.log("Computer Score : " + compScore);
+                console.log("Your Score : " + humanScore);
+            }
+            if (hc == cc) {
+                console.log("It's a draw!")
+                console.log("current SCORES : ")
+                console.log("Computer Score : " + compScore);
+                console.log("Your Score : " + humanScore);
+            }
+            else {
+                console.log("invalid")
+            }
+        }
+
+        // while (prompt("Want to play Rock/paper/Scissors (y/n)") == 'y') {
+        let rounds = parseInt(prompt("How many rounds?"))
+        for (let i = 0; i < rounds; i++) {
+            const inp1 = getComputerChoice(3);
+            const inp2 = getHumanChoice();
+
+            playRound(inp2, inp1)
+
+        }
+        if (compScore == humanScore)
+            console.log("FINAL RESULT : ITS A DRAW")
+        else if (compScore > humanScore)
+            console.log("FINAL RESULT : YOU LOSE! TRY AGAIN!")
+        else
+            console.log("FINAL RESULT : YOU WON! CONGRATS!")
+
+
+
+    </script>
+</body>
+
+</html>
